@@ -1,0 +1,158 @@
+@prefix : <people.lis.illinois.edu/~salopek2/Center#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <people.lis.illinois.edu/~salopek2/Center> .
+
+<people.lis.illinois.edu/~salopek2/Center> rdf:type owl:Ontology ;
+                                           
+                                           owl:imports <http://courseweb.lis.illinois.edu/lis/2015sp/lis590odl/RDF/gslis.ttl> ;
+                                           
+                                           owl:versionIRI <people.lis.illinois.edu/~salopek2/Center/0.0.1/> .
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  people.lis.illinois.edu/~salopek2/Center#administrative_support_by
+
+:administrative_support_by rdf:type owl:ObjectProperty ;
+                           
+                           rdfs:comment "person who provides administraive support to a center"@en ;
+                           
+                           rdfs:range <http://courseweb.lis.illinois.edu/lis/2015sp/lis590odl/gslis/Human_Resource> ;
+                           
+                           rdfs:domain :Center .
+
+
+
+###  people.lis.illinois.edu/~salopek2/Center#affiliated_with
+
+:affiliated_with rdf:type owl:ObjectProperty ;
+                 
+                 rdfs:comment "agents who are related to the center"@en ;
+                 
+                 rdfs:range <http://xmlns.com/foaf/0.1/Agent> ;
+                 
+                 rdfs:domain :Center .
+
+
+
+###  people.lis.illinois.edu/~salopek2/Center#affliates
+
+:affliates rdf:type owl:ObjectProperty ;
+           
+           rdfs:comment "a research center which an agent is related with"@en ;
+           
+           rdfs:domain <http://xmlns.com/foaf/0.1/Agent> ;
+           
+           rdfs:range :Center ;
+           
+           owl:inverseOf :affiliated_with .
+
+
+
+###  people.lis.illinois.edu/~salopek2/Center#centered_on
+
+:centered_on rdf:type owl:ObjectProperty ;
+             
+             rdfs:comment "the focus areas of the center"@en ;
+             
+             rdfs:range <http://courseweb.lis.illinois.edu/lis/2015sp/lis590odl/gslis/Activity> ;
+             
+             rdfs:domain :Center .
+
+
+
+###  people.lis.illinois.edu/~salopek2/Center#funded_by
+
+:funded_by rdf:type owl:ObjectProperty ;
+           
+           rdfs:comment "where the money for the research comes from"@en ;
+           
+           rdfs:domain <http://courseweb.lis.illinois.edu/lis/2015sp/lis590odl/gslis/Research_Project> ;
+           
+           rdfs:range :Research_Grant ;
+           
+           owl:inverseOf :funds .
+
+
+
+###  people.lis.illinois.edu/~salopek2/Center#funds
+
+:funds rdf:type owl:ObjectProperty ;
+       
+       rdfs:comment "where the resources of the research grant goes"@en ;
+       
+       rdfs:range <http://courseweb.lis.illinois.edu/lis/2015sp/lis590odl/gslis/Research_Project> ;
+       
+       rdfs:domain :Research_Grant .
+
+
+
+###  people.lis.illinois.edu/~salopek2/Center#involved_in_supporting
+
+:involved_in_supporting rdf:type owl:ObjectProperty ;
+                        
+                        rdfs:comment "Projects a center supports"@en ;
+                        
+                        rdfs:range <http://courseweb.lis.illinois.edu/lis/2015sp/lis590odl/gslis/Research_Project> ;
+                        
+                        rdfs:domain :Center .
+
+
+
+###  people.lis.illinois.edu/~salopek2/Center#project_managed_by
+
+:project_managed_by rdf:type owl:ObjectProperty ;
+                    
+                    rdfs:comment "who project manages the project"@en ;
+                    
+                    rdfs:domain <http://courseweb.lis.illinois.edu/lis/2015sp/lis590odl/gslis/Research_Project> ;
+                    
+                    rdfs:subPropertyOf <http://www.w3.org/ns/org#headOf> ;
+                    
+                    rdfs:range <http://xmlns.com/foaf/0.1/Person> .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  people.lis.illinois.edu/~salopek2/Center#Center
+
+:Center rdf:type owl:Class ;
+        
+        rdfs:subClassOf <http://courseweb.lis.illinois.edu/lis/2015sp/lis590odl/gslis/Group_Resource> ,
+                        <http://www.w3.org/ns/org#Organization> ;
+        
+        rdfs:comment "An organization that acts like a group resource to support research"@en .
+
+
+
+###  people.lis.illinois.edu/~salopek2/Center#Research_Grant
+
+:Research_Grant rdf:type owl:Class ;
+                
+                rdfs:subClassOf <http://courseweb.lis.illinois.edu/lis/2015sp/lis590odl/gslis/Resource> ,
+                                <http://purl.org/NET/c4dm/event.owl#Event> ;
+                
+                rdfs:comment "Money that supports research"@en .
+
+
+
+
+###  Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net
+
